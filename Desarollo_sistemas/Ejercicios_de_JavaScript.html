@@ -10,8 +10,91 @@
     <h1>Ejercicios de JavaScript</h1>
     <script>
       
-      //Colocar aquí la resolución de cada ejercicio
+      function calcularPuntaje(array) {
+        let puntaje = 0;
+        for(let i = 0; i < array.length; i++) {
+            if(array[i] === 5) {
+                puntaje += 5;
+            } else if(array[i] % 2 === 0) {
+                puntaje += 1;
+            } else {
+                puntaje += 3;
+            }
+        }
+        return puntaje;
+      }
+      console.log(calcularPuntaje([1, 2, 3, 4, 5])); 
 
-    </script>
+
+    let numero1 = 5;
+    let numero2 = 8;
+
+    if(numero1 <= numero2) {
+        console.log("numero1 no es mayor que numero2");
+    }
+
+    if(numero2 > 0) {
+        console.log("numero2 es positivo");
+    }
+
+    if(numero1 < 0 || numero1 !== 0) {
+        console.log("numero1 es negativo o distinto de cero");
+    }
+
+    if(numero1 + 1 < numero2) {
+        console.log("Incrementar en 1 unidad el valor de numero1 no lo hace mayor o igual que numero2");
+    }
+
+
+      let letras = ['T', 'R', 'W', 'A', 'G', 'M', 'Y', 'F', 'P', 'D', 'X', 'B', 'N', 'J', 'Z', 'S', 'Q', 'V', 'H', 'L', 'C', 'K', 'E', 'T'];
+
+
+      let numeroDNI = prompt("Por favor, ingresa tu número de DNI:");
+      let letraDNI = prompt("Por favor, ingresa la letra de tu DNI:");
+
+      if(numeroDNI < 0 || numeroDNI > 99999999) {
+        console.log("El número proporcionado no es válido.");
+      } else {
+          let letraCalculada = letras[numeroDNI % 23];
+        
+        if(letraCalculada !== letraDNI) {
+          console.log("La letra que has indicado no es correcta.");
+        } else {
+            console.log("El número y la letra de DNI son correctos.");
+        }
+    }
+
+      function factorial(n) {
+        let resultado = 1;
+        for(let i = 1; i <= n; i++) {
+            resultado *= i;
+        }
+        return resultado;
+    }
+    console.log(factorial(5));
+
+    function esPalindromo(cadena) {
+        let cadenaSinEspacios = cadena.toLowerCase().replace(/ /g, '');
+        let cadenaInvertida = cadenaSinEspacios.split('').reverse().join('');
+        return cadenaSinEspacios === cadenaInvertida;
+    }
+    console.log(esPalindromo("La ruta nos aporto otro paso natural"));
+
+
+    function lanzarDados() {
+      let apariciones = new Array(13).fill(0);
+
+      for(let i = 0; i < 36000; i++) {
+        let dado1 = Math.floor(Math.random() * 6) + 1;
+        let dado2 = Math.floor(Math.random() * 6) + 1;
+        let suma = dado1 + dado2;
+        apariciones[suma]++;
+      }
+      let maxApariciones = Math.max(...apariciones);
+      let valorMasRepetido = apariciones.indexOf(maxApariciones);
+    console.log("El valor que más veces se repitió es " + valorMasRepetido + " con " + maxApariciones + " apariciones.");
+    }
+    lanzarDados();
+  </script>
   </body>
 </html>
