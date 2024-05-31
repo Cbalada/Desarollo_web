@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>Ejercicios de JavaScript</title>
+  </head>
+  
+  <body>
+    <h1>Ejercicios de JavaScript 2</h1>
+    <script>
+    const factorial = function(n) {
+        if (n < 0) {
+            return "El factorial no está definido para números negativos";
+        }
+        let result = 1;
+        for (let i = 1; i <= n; i++) {
+            result *= i;
+        }
+        return result;
+    };
+    console.log(factorial(5));
+    console.log(factorial(0));
+    console.log(factorial(-1));
+
+    function esPalindromo(texto) {
+        const textoLimpio = texto.toLowerCase().replace(/\s+/g, '');
+        const textoInvertido = textoLimpio.split('').reverse().join('');
+        return textoLimpio === textoInvertido;
+    }
+
+    console.log(esPalindromo("A man a plan a canal Panama"));
+    console.log(esPalindromo("Anita lava la tina"));
+    console.log(esPalindromo("No es un palíndromo"));
+    console.log(esPalindromo("racecar"));
+    console.log(esPalindromo("palindrome"));
+
+    const persona = {
+        nombre: 'Juan',
+        apellido: 'Pérez',
+        edad: 30,
+        saludar: function() {
+          console.log(`Hola, mi nombre es ${this.nombre} ${this.apellido} y tengo ${this.edad} años.`);
+        } 
+    };
+    persona.saludar();
+    
+    
+    const crearLibro = function(titulo, autores, editorial, anoEdicion) {
+
+      return {
+        titulo: titulo,
+        autores: autores,
+        editorial: editorial,
+        anoEdicion: anoEdicion
+      };
+
+    };
+
+    const libro1 = crearLibro("Cien Años de Soledad", ["Gabriel García Márquez"], "Editorial Sudamericana", 1967);
+
+    const libro2 = crearLibro("Don Quijote de la Mancha", ["Miguel de Cervantes"], "Francisco de Robles", 1605);
+
+    console.log(libro1);
+    console.log(libro2)
+
+    const empresa = {
+      empleados: [],
+        agregarEmpleado: function(nombre, salario) {
+
+          this.empleados.push({ nombre: nombre, salario: salario });
+
+        },
+
+        calcularSalarioPromedio: function() {
+          if (this.empleados.length === 0) {
+            return 0;
+        }
+        const totalSalario = this.empleados.reduce((suma, empleado) => suma + empleado.salario, 0);
+        return totalSalario / this.empleados.length;
+
+      },
+
+      obtenerEmpleadoConSalarioMasAlto: function() {
+          if (this.empleados.length === 0) {
+            return null;
+          }
+          return this.empleados.reduce((max, empleado) => (empleado.salario > max.salario ? empleado : max), this.empleados[0]);
+      }
+    };
+
+    empresa.agregarEmpleado('Juan', 3000);
+    empresa.agregarEmpleado('Ana', 4000);
+    empresa.agregarEmpleado('Luis', 3500);
+
+    console.log('Empleados:', empresa.empleados);
+    console.log('Salario promedio:', empresa.calcularSalarioPromedio());
+    console.log('Empleado con el salario más alto:', empresa.obtenerEmpleadoConSalarioMasAlto());
+
+    function filtrarPorValor(arr, propiedad, valor) {
+      return arr.filter(obj => obj[propiedad] === valor);
+    }
+
+    const personas = [
+
+      { nombre: 'Juan', edad: 30 },
+      { nombre: 'Ana', edad: 25 },
+      { nombre: 'Luis', edad: 30 },
+      { nombre: 'María', edad: 25 }
+
+    ];
+
+    const resultadoEdad30 = filtrarPorValor(personas, 'edad', 30);
+    console.log('Filtrar por edad 30:', resultadoEdad30);
+
+    const resultadoNombreAna = filtrarPorValor(personas, 'nombre', 'Ana');
+    console.log('Filtrar por nombre Ana:', resultadoNombreAna);
+
+    </script>
+  </body>
+</html>
